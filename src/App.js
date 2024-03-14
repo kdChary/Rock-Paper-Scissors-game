@@ -1,3 +1,5 @@
+import {Component} from 'react'
+
 import './App.css'
 
 const choicesList = [
@@ -18,6 +20,31 @@ const choicesList = [
   },
 ]
 
-const App = () => <div>Hello World</div>
+class App extends Component {
+  state = {playerChoice: '', showRules: false, score: 0}
+
+  getValue = () => {
+    const index = Math.floor(Math.random() * 3)
+    console.log(index)
+
+    return choicesList[index]
+  }
+
+  onClickShowRules = () => {
+    this.setState({showRules: true})
+  }
+
+  onClickCross = () => {
+    this.setState({showRules: false})
+  }
+
+  render() {
+    const {score} = this.state
+
+    console.log(this.getValue())
+
+    return <div>render Things</div>
+  }
+}
 
 export default App
