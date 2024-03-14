@@ -63,19 +63,20 @@ export const Button = styled.button`
   outline: none;
 `
 export const ResultContainer = styled.div`
-  width: 300px;
+  width: ${props => (props.rules ? '100%' : '300px')};
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 export const ResultCard = styled.div`
   display: flex;
+  flex-direction: ${props => (props.rules ? 'column' : 'row')}
   justify-content: space-between;
   width: 90%;
 `
 export const ResultImg = styled.img`
-  width: 112px;
-  max-width: 135px;
+  width: ${props => (props.rules ? '100%' : '112px')};
+  max-width: ${props => (props.rules ? '320px' : '135px')};
   flex-grow: 1;
 `
 export const ResultItem = styled.div`

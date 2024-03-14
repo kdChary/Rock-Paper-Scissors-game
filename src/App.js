@@ -1,4 +1,6 @@
 import {Component} from 'react'
+import Popup from 'reactjs-popup'
+import {RiCloseLine} from 'react-icons/ri'
 
 import './App.css'
 import GameItems from './components/GameItems'
@@ -168,6 +170,26 @@ class App extends Component {
     )
   }
 
+  renderRulesCard = () => (
+    <ResultContainer rules>
+      <Popup modal trigger={<Button rules>Rules</Button>}>
+        {close => (
+          <ResultCard rules>
+            <Button type="button" onClick={() => close()}>
+              <RiCloseLine />
+            </Button>
+            <ResultImg
+              rules
+              as="img"
+              src="https://assets.ccbp.in/frontend/react-js/rock-paper-scissor/rules-image.png"
+              alt="rules"
+            />
+          </ResultCard>
+        )}
+      </Popup>
+    </ResultContainer>
+  )
+
   render() {
     const {showResult} = this.state
 
@@ -176,7 +198,7 @@ class App extends Component {
         {this.renderScoreCardSection()}
 
         {showResult ? this.renderResultCard() : this.renderGameItems()}
-        <Button rules>Rules</Button>
+        {this.renderRulesCard()}
       </Container>
     )
   }
